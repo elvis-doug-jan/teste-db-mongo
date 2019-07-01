@@ -17,12 +17,15 @@ app.use(bodyParser.json())
 app.get('/', async (req, res) => {
   //   .then(result => res.json(result))
 
-  for (let i = 0; i < 1000000; i++) {
-    await knex.raw(`insert into teste."Table1" values ('${v4()}', 'User${i}')`)
+  for (let i = 1; i < 10000; i++) {
+    // await knex.raw(`insert into teste."Table1" values ('${v4()}', 'User${i}')`)
+    // await knex.raw(`insert into clientes.cliente values ('${v4()}', 'Fulano ${i}')`)
+    // await knex.raw(`insert into orcamentos.orcamentos values ('${v4()}', 'Novo orçamento ${i}', 'da8c2c9b-0881-43ed-b491-4c0afa7f63b9')`)
+    await knex.raw(`insert into projetos.projeto values('${v4()}', 'Novo projeto ${i}', '81da9688-c232-4e86-8cdd-6de1aade164f', 'da8c2c9b-0881-43ed-b491-4c0afa7f63b9')`)
   }
 
-  await knex.raw(`select * from teste."Table1"`)
-    .then(result => res.json(result))
+  // await knex.raw(`select * from teste."Table1"`)
+  //   .then(result => res.json(result))
 
-  // res.json('ok')
+  res.json('ok')
 })
